@@ -77,7 +77,7 @@
 	</div>
     </nav>
 
-	<!-- Modal feature implementation - @nathandh 02.04.2016 -->
+	<!-- LOGIN modal feature implementation - @nathandh 02.04.2016 -->
 	<div id="loginModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content -->
@@ -87,7 +87,7 @@
 					<h4 class="modal-title">Login </h4>
 				</div>
 				<div class="modal-body">
-					<!-- Navbar Login Form added 01/24/2016 @nathandh -->
+					<!-- Original Login Form added 01/24/2016 @nathandh -->
 					<form class="form-inline" role="form" id="login_form">
 						<div class="form-group">
 							<input id="email" type="text" class="form-control input-sm" placeholder="Email">
@@ -107,7 +107,91 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> <!-- /End LOGIN modal -->
+
+	<!-- RESERVATION modal feature implementation - @nathandh 02.04.2016 -->
+	<div id="reserveModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Reserve Table </h4>
+				</div>
+				<div class="modal-body">
+					<!-- Original Reservation Form implementation - @nathandh 01.24.2016 -->
+					<form class="form-horizontal" role="form" id="reservationForm">
+						<div class="form-group row">
+							<label for="guestsCountRow" class="col-sm-2 control-label" style="text-align: right;">Number of Guests</label>
+							<div class="col-sm-10" id="guestsCountRow">
+								<label style="margin-left:0px;"><input type="radio" name="guestsCount" id="guestsCount1" value="1"> 1</label>
+								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount2" value="2"> 2</label>
+								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount3" value="3"> 3</label>
+								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount4" value="4"> 4</label>
+								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount5" value="5"> 5</label>
+								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount6" value="6"> 6</label>
+							</div>
+						</div>
+						<!-- Smoking / Non-Smoking row selection inclusion -->
+						<div class="form-group row">
+							<label for="smokeSection" class="col-sm-2 control-label" style="text-align:right;">
+							Section</label>
+							<div class="col-sm-10" id="smokeSection">
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-success active">
+										<input type="radio" name="s_section" id="non_smoking" autocomplete="off"
+											checked>Non-Smoking
+									</label>
+									<label class="btn btn-danger">
+										<input type="radio" name="s_section" id="smoking" autocomplete="off">
+											Smoking
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="dateTime" class="col-sm-2 control-label" style="text-align:right;">
+							Date and Time</label>
+							<div class="col-sm-10" id="dateTime">
+								<div class="form-group has-feedback col-sm-5">
+									<input type="datetime" class="form-control input-sm" id="date" name="date"
+										placeholder="Date" aria-describedby="inputDate">
+									<span class="glyphicon glyphicon-calendar form-control-feedback" 
+										aria-hidden="true"></span>
+								</div>
+								<div class="col-sm-1"><p style="padding:10px;"></p></div>
+								<div class="form-group has-feedback col-sm-5">
+									<input type="datetime" class="form-control input-sm" id="time" name="time"
+										placeholder="Time">
+									<span class="glyphicon glyphicon-time form-control-feedback" 
+										aria-hidden="true"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-2"><p style="padding:10px;"></p></div> <!--spacer-->
+							<div class="col-sm-10">
+								<a class="btn btn-primary" href="#">Reserve</a>
+								<button type="button" class="btn btn-default btn-sm"
+									data-dismiss="modal">Cancel</button>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-12">
+								<div class="alert alert-warning aler-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span></button>
+									<strong>Warning: </strong>Please <a href="tel:+85212345678">call</a> us 
+									to reserve for more than six guests.
+								</div>
+							</div>
+						</div>
+					</form>
+				</div> <!-- /End modal Body -->
+			</div> <!--/End modal Content -->
+		</div> <!-- /End modal Dialog -->
+	</div> <!-- /End RESERVE modal -->
+
 
     <!-- Main header class and Jumbotron container for Bootstrap Grid -->
     <header class="jumbotron">
@@ -129,11 +213,13 @@
 				<!-- Reserve table button - @nathandh added 01.24.2016 -->
 				<div class="col-xs-12 col-sm-2">
 					<p style="padding:20px;"></p>
+					<!-- Removed tooltip from our link button, and converted to Modal display on click 
+						@nathandh 02.04.2016 implemented -->
 					<a type="button" class="btn btn-warning btn-block" 
-						data-toggle="tooltip" title="Or Call us at +852 12345678"
-						data-placement="bottom"
-						style="white-space:normal !important;" 
-						href="#reservations">Reserve Table</a>	
+						data-toggle="modal"
+						data-target="#reserveModal"
+						style="white-space:normal !important;">
+						Reserve Table</a>	
 				</div>
             </div>
         </div>
@@ -275,63 +361,6 @@
 				</div>
             </div>
         </div>
-
-		<!-- Reservation Form addition - @nathandh added 01/24/2016 -->
-		<div class="row row-content" id="reservations">
-			<div class="col-xs-12">
-				<div class="col-sm-3">
-					<h3><strong>Reserve a Table<strong></h3>
-				</div>
-				<div class="col-sm-9">
-					<form class="form-horizontal" role="form" id="reservationForm">
-						<div class="form-group row">
-							<label for="guestsCountRow" class="col-sm-2 control-label" style="text-align: right;">Number of Guests</label>
-							<div class="col-sm-10" id="guestsCountRow">
-								<label style="margin-left:0px;"><input type="radio" name="guestsCount" id="guestsCount1" value="1"> 1</label>
-								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount2" value="2"> 2</label>
-								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount3" value="3"> 3</label>
-								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount4" value="4"> 4</label>
-								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount5" value="5"> 5</label>
-								<label style="margin-left:12px;"><input type="radio" name="guestsCount" id="guestsCount6" value="6"> 6</label>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="dateTime" class="col-sm-2 control-label" style="text-align: right;">Date and Time</label>
-							<div class="col-sm-10" id="dateTime">
-								<div class="form-group has-feedback col-sm-5">
-									<input type="datetime" class="form-control input-sm" id="date" name="date"
-										placeholder="Date" aria-describedby="inputDate">
-									<span class="glyphicon glyphicon-calendar form-control-feedback" 
-										aria-hidden="true"></span>
-								</div>
-								<div class="col-sm-1"><p style="padding:10px;"></p></div>
-								<div class="form-group has-feedback col-sm-5">
-									<input type="datetime" class="form-control input-sm" id="time" name="time"
-										placeholder="Time">
-									<span class="glyphicon glyphicon-time form-control-feedback" 
-										aria-hidden="true"></span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-sm-2"><p style="padding:10px;"></p></div> <!--spacer-->
-							<div class="col-sm-10">
-								<a class="btn btn-primary" href="#">Reserve</a>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-sm-12">
-								<div class="alert alert-warning aler-dismissible" role="alert">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span></button>
-									<strong>Warning: </strong>Please <a href="tel:+85212345678">call</a> us to reserve for more than six guests.
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
     </div> <!-- //End MAIN Bootsrap body container -->
 
     <footer class="row-footer">
