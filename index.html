@@ -62,14 +62,14 @@
 						<li role="separator" class="divider"></li>
 						<li class="dropdown-header">Specials</li>
 						<li><a href="#">Lunch Buffet</a></li>
-						<li><a href="#">Weekend Menu</a></li>
+						<li><a href="#">Weekend Brunch</a></li>
 					</ul>
 				</li>
 				<li><a href="contactus.html"><i class="fa fa-envelope-o">
 					</i> Contact</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a data-toggle="modal" data-target="#loginModal">
+				<li><a id="loginButton">
 					<span class="glyphicon glyphicon-log-in"></span>
 					Login</a>
 				</li>
@@ -179,7 +179,7 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-12">
-								<div class="alert alert-warning aler-dismissible" role="alert">
+								<div class="alert alert-warning alert-dismissible" role="alert">
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span></button>
 									<strong>Warning: </strong>Please <a href="tel:+85212345678">call</a> us 
@@ -216,9 +216,7 @@
 					<p style="padding:20px;"></p>
 					<!-- Removed tooltip from our link button, and converted to Modal display on click 
 						@nathandh 02.04.2016 implemented -->
-					<a type="button" class="btn btn-warning btn-block" 
-						data-toggle="modal"
-						data-target="#reserveModal"
+					<a id="reserveButton" type="button" class="btn btn-warning btn-block" 
 						style="white-space:normal !important;">
 						Reserve Table</a>	
 				</div>
@@ -443,6 +441,21 @@
 	<!-- Carousel controls specific -->
 	<script>
 		$(document).ready(function(){
+			//Login Button control for Modal
+			$("#loginButton").click(function(){
+				// Toggle modal
+				console.log("...loginButton was clicked...");
+				$("#loginModal").modal('toggle');
+			});
+
+			//Reserve Button control for Modal
+			$("#reserveButton").click(function(){
+				// Toggle modal
+				console.log("...reserveButton was clicked...");
+				$("#reserveModal").modal('toggle');
+			});
+
+			// Carousel specific controls
 			$("#mycarousel").carousel( {interval:2000} );
 			// Pause
 			$("#carousel-pause").click(function(){
