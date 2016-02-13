@@ -286,6 +286,19 @@
 						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>
 					</a>
+
+					<!-- Carousel buttons to Pause/Resume animation 
+						 @nathandh - added 02/13/2016 -->
+					<div class="btn-group" id="carouselButtons">
+						<button class="btn btn-danger btn-xs" id="carousel-pause">
+							<span class="glyphicon glyphicon-pause" 
+								aria-hidden="true"></span>
+						</button>
+						<button class="btn btn-danger btn-xs" id="carousel-play">
+							<span class="glyphicon glyphicon-play" 
+								aria-hidden="true"></span>
+						</button>
+					</div><!--/.btn-group -->
 				</div>
 			</div>
 		</div>
@@ -424,6 +437,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- All compiled Bootstrap plugins minified -->
     <script src="js/bootstrap.min.js"></script>
+
+	<!-- Carousel controls specific -->
+	<script>
+		$(document).ready(function(){
+			$("#mycarousel").carousel( {interval:2000} );
+			// Pause
+			$("#carousel-pause").click(function(){
+				$("#mycarousel").carousel('pause');
+			});
+			// Play
+			$("#carousel-play").click(function(){
+				$("#mycarousel").carousel('cycle');
+			});
+		});
+	</script><!--/carousel control button JS
 </body>
 
 </html>
